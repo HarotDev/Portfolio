@@ -1,0 +1,95 @@
+﻿@model Portfolio.Models.ProjectVM
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = (Model?.Title ?? "Projekt") + " – Case";
+}
+
+<section class="case-hero">
+    <div class="container">
+        <h1 class="case-title reveal">@Model.Title</h1>
+
+        @if (!string.IsNullOrWhiteSpace(Model?.Summary))
+        {
+            <p class="case-summary reveal">@Model.Summary</p>
+        }
+
+        <div class="case-meta reveal">
+            @if (!string.IsNullOrWhiteSpace(Model?.Role))
+            {
+                <span><strong>Roll:</strong> @Model.Role</span>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model?.Period))
+            {
+                <span><strong>År:</strong> @Model.Period</span>
+            }
+            @if (Model?.Techs != null && Model.Techs.Any())
+            {
+                <span class="techs">
+                    <strong>Teknik:</strong>
+                    @foreach (var t in Model.Techs)
+                    {
+                        <em>@t</em>
+                    }
+                </span>
+            }
+        </div>
+
+        <div class="case-heroMedia">
+            @if (!string.IsNullOrWhiteSpace(Model?.HeroImage))
+            {
+                <img src="@Model.HeroImage" alt="@Model.Title" />
+            }
+            <canvas id="caseHeroWaves" aria-hidden="true"></canvas>
+        </div>
+
+        <div class="case-cta reveal">
+            @if (!string.IsNullOrWhiteSpace(Model?.LiveUrl))
+            {
+                <a href="@Model.LiveUrl" class="btn" target="_blank" rel="noopener">Se live</a>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model?.RepoUrl))
+            {
+                <a href="@Model.RepoUrl" class="btn-outline" target="_blank" rel="noopener">Källkod</a>
+            }
+            <a asp-controller="Home" asp-action="Index" class="btn-outline">← Tillbaka</a>
+        </div>
+    </div>
+</section>
+
+@if (Model?.Bullets != null && Model.Bullets.Any())
+{
+    <section class="section">
+        <div class="container two">
+            <div class="panel reveal">
+                <h3>Mål & resultat</h3>
+                <ul class="bullets">
+                    @foreach (var b in Model.Bullets)
+                    {
+                        <li>@b</li>
+                    }
+                </ul>
+            </div>
+            <div class="panel reveal">
+                <h3>Lärdomar</h3>
+                <p>Kort text om vad du lärde dig i detta case.</p>
+            </div>
+        </div>
+    </section>
+}
+
+@if (Model?.Gallery != null && Model.Gallery.Any())
+{
+    <section class="section alt">
+        <div class="container">
+            <h2 class="reveal">Galleri</h2>
+            <div class="gallery">
+                @foreach (var img in Model.Gallery)
+                {
+                    <figure class="shot tilt reveal">
+                        <img src="@img" alt="@Model.Title" loading="lazy" />
+                    </figure>
+                }
+            </div>
+        </div>
+    </section>
+}
