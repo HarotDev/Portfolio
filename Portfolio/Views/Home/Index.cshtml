@@ -1,150 +1,149 @@
 ﻿@model Portfolio.Models.HomeIndexVM
 @{
-    ViewData["Title"] = "Portfolio – Harot Aziz";
+    ViewData["Title"] = "Harot Aziz – Portfolio";
 }
 
-<!-- =========================
-     HERO (centrerad som i exemplet)
-========================= -->
-<section class="hero">
-    <div class="container" style="text-align:center">
-        <div class="reveal">
-            <span class="eyebrow">
-                <span class="dot" aria-hidden="true"></span>
-                Välkommen hit
-            </span>
-        </div>
-
-        <h1 class="hero-title reveal">Hej, jag är Harot Aziz</h1>
-        <p class="hero-role reveal">Fullstack .NET-utvecklare</p>
-        <p class="hero-sub reveal" style="margin-inline:auto">
-            Jag bygger moderna, användarvänliga och snabba webblösningar – från C#/ASP.NET&nbsp;Core i backend till
-            smidiga gränssnitt i JavaScript.
+<!-- HERO -->
+<section id="hero" class="section hero hero-centered">
+    <div class="container">
+        <p class="eyebrow reveal">Hej! Jag är</p>
+        <h1 class="type-line" aria-label="Harot Aziz">
+            <span id="typeName" class="grad-name"></span>
+            <span class="caret" aria-hidden="true"></span>
+        </h1>
+        
+        <p class="tagline reveal">
+            Fullstack-utvecklare inom .NET som bygger tydliga gränssnitt och stabila backends.
         </p>
 
-        <div class="hero-cta reveal" style="justify-content:center">
-            <a href="#contact" class="btn magnet">Kontakta mig</a>
-            <a href="/Harot_Aziz_CV.pdf" class="btn-outline">Ladda ner CV</a>
+        <!-- Sociala ikoner -->
+        <div class="hero-social reveal">
+            <a href="https://github.com/HarotDev" target="_blank" rel="noopener" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/harotaziz/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="mailto:harotaziz@icloud.com" target="_blank" rel="noopener" aria-label="E-post">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
         </div>
 
-        <canvas id="heroCanvas" aria-hidden="true"></canvas>
+        <div class="hero-cta reveal">
+            <a href="#projects" class="btn">Se projekt</a>
+            <a href="/cv.pdf" class="btn-outline">Visa CV</a>
+        </div>
+
+        
     </div>
 </section>
 
-<!-- =========================
-     ABOUT (endast text – inga “stats”)
-========================= -->
-<section id="about" class="section alt" aria-labelledby="about-title">
-    <div class="container">
-        <h2 id="about-title" class="reveal" style="text-align:center">About Me</h2>
 
-        <p class="reveal" style="max-width:72ch;margin-inline:auto;text-align:center">
-            Mitt intresse för teknik började när jag var liten och jag ville alltid förstå vad som händer bakom skärmen.
-            Idag är jag utbildad <strong>fullstack-utvecklare inom .NET</strong> med fokus på
-            <strong>C#/ASP.NET&nbsp;Core</strong> och moderna <strong>JavaScript-lösningar</strong>.
-            Jag gillar tydliga gränssnitt, mjuka animationer och att hela tiden hitta bättre lösningar – både i
-            <em>design</em> och <em>system</em>.
-            Här hittar du några av projekten jag gjorde under utbildningen och andra egna projekt.
-        </p>
+<!-- OM MIG -->
+<section id="about" class="section">
+    <div class="container about-split">
+        <!-- Vänster: rubrik + text -->
+        <div class="about-col about-textcol reveal">
+            <h2>Om mig</h2>
+            <p class="about-text">
+                Teknikintresset började tidigt – jag ville alltid förstå vad som händer bakom skärmen.
+                Idag jobbar jag med <strong>C#/ASP.NET Core</strong> i backend och moderna
+                <strong>JavaScript-gränssnitt</strong> i frontend. Jag gillar att hitta bättre lösningar,
+                förbättra design och göra systemen smidigare att använda och utveckla vidare.
+                Här hittar du både projekt från min utbildning och flera egna sidoprojekt.
+            </p>
+        </div>
+
+        <!-- Höger: SVG line-draw (din kod) -->
+        <div class="about-col about-artcol reveal">
+            <div class="line-stage" id="aboutStage" aria-hidden="true">
+                <svg version="1.1"
+                     id="aboutSvg"
+                     width="700"
+                     height="700"
+                     viewBox="0 0 1000 1000"
+                     xmlns="http://www.w3.org/2000/svg"
+                     xmlns:svg="http://www.w3.org/2000/svg">
+                    <defs id="defs1" />
+                    <g id="g1">
+                        <path style="fill:none;stroke:#ffffff;stroke-width:1.3;stroke-dasharray:none;stroke-opacity:1"
+                              d="m 691.02439,657.29966 c -17.49766,35.91733 -37.5464,71.7688 -63.81094,101.80771 -9.75892,10.57281 -36.0152,46.57607 -5.35539,17.71638 20.25234,-13.66012 62.13489,-77.51169 61.14194,-71.58761 -15.17735,39.46981 -42.67241,73.5932 -66.75,106.14276 -22.70966,23.19335 -49.06224,47.19808 -80.91145,59.6211 -25.78123,15.50411 -36.94251,-1.06832 -11.96507,-12.09848 10.40117,-6.23727 76.11463,-45.54992 46.31581,-42.69442 -22.59035,11.44254 -28.76977,11.0925 -42.2047,17.2966 -3.30001,-6.83166 -0.91033,6.26826 -14.16127,5.48099 -7.88539,-1.61432 -25.07314,-3.03084 -40.77666,-5.19618 -28.03322,11.46799 -41.07047,-6.18035 -63.38564,-5.56091 -28.1653,-11.18311 -47.15813,-35.28717 -67.17901,-54.82421 -13.77707,-22.10503 -20.06827,-13.43137 -29.56562,-39.47278 -8.52626,-14.85077 -19.4071,-40.89928 -28.55746,-58.52978 -8.05497,-7.34311 -8.54139,-17.74703 -11.50853,-38.3464 -4.26856,-12.31048 0.0711,-62.44756 1.94305,-57.63821 2.06875,9.22823 67.23469,96.59485 67.96847,87.9008 1.69723,-1.81252 11.80472,-18.8171 0.82517,-30.87059 10.57658,15.42858 -0.005,-19.91911 -1.24589,-13.19615 -3.00807,-18.21029 8.0222,-34.675 29.75439,-35.25001 12.52559,-3.46323 20.58992,-4.11059 22.61013,4.94885 12.23013,-22.07967 29.4466,-28.00168 47.14823,-24.94887 12.17791,4.85776 19.47297,1.36037 30.35264,-9.11235 2.09228,2.65153 35.89749,-0.14303 33.86503,1.55134 12.20563,23.77983 40.93882,13.40972 52.02321,34.14176 -8.61265,-23.54599 13.14295,11.59313 20.14392,-6.95366 10.67409,3.37717 19.35714,10.58038 24.96257,16.70862 3.81391,13.12591 8.11322,28.99316 11.25323,34.66404 7.90588,21.55022 12.8726,8.52866 11.0404,5.82818 7.27376,0.77242 12.74588,6.67011 21.25252,12.28265 -6.44551,-11.32312 9.94301,-28.63997 4.42501,-6.92187 0.40759,-3.6074 13.90259,4.19325 12.76203,8.70509 3.18874,3.65757 16.17929,-5.4992 14.67089,-11.79966 6.75679,-3.0813 7.82564,-31.06015 10.93177,-16.02494 0.10479,-10.93404 6.07458,-16.61339 9.99508,-26.58938 -0.22479,-13.85509 -1.63892,40.70117 -8.00786,52.81959 z M 524.58846,750.75 c -9.35566,-20.08978 2.39624,-13.90284 -9.32652,-33.74999 -16.25808,-27.32167 -11.47436,-0.17552 -2.18219,4.72193 12.36023,16.61559 -3.90267,27.47791 3.56049,30.2162 8.24414,-22.25366 5.77342,17.66057 7.94822,-1.18814 z M 399.41064,744.5 c 9.07411,-12.52052 11.27614,-11.76079 9.18245,-18.74997 5.69463,5.22323 23.38942,-20.87888 14.58264,-39.13538 4.76306,-11.34499 4.42589,2.32678 11.57427,-14.15599 9.66715,9.88252 14.14832,-12.20456 33.22669,-3.52292 1.89429,-4.92386 22.77362,-3.34201 29.01907,4.05636 -0.20786,11.80391 6.35531,-6.31237 4.77069,2.63071 12.55406,-3.9663 4.5242,27.51103 15.97609,25.83197 -0.58962,0.42322 6.56862,9.38622 16.58092,22.16694 6.99526,9.27711 5.02346,-9.99637 20.25601,-0.96822 9.67262,-6.60687 26.24851,3.57148 25.92053,-12.93859 14.22358,6.51353 13.57263,-13.09406 16.88268,-13.61691 -3.36848,-5.5605 -3.27378,-17.52995 -3.94785,-23.91623 19.12843,17.11814 17.99797,6.25289 4.54662,-7.15175 C 587.11672,646.94829 560.59631,627.59878 531,623.86277 c 31.83538,4.05406 -11.3477,-19.05069 -10.96557,-9.90062 -7.54353,3.71679 -14.35384,-10.58351 -19.34952,-18.90688 -2.79433,7.5017 -11.6356,14.40353 -21.54451,1.08352 -0.8408,-3.56594 -7.2683,-5.58699 -6.05108,3.35129 -10.6897,-3.17461 -23.16404,5.89597 -37.35382,7.48155 -1.34183,-4.48671 -9.80185,5.25754 -18.50218,4.81154 -8.90567,-20.05091 -10.59705,5.81028 -19.59107,5.72702 -3.11669,7.68555 20.14213,6.71389 10.35766,11.60644 -9.86812,5.10106 -45.31561,9.29922 -45.62447,39.49592 6.12575,10.05787 -10.40136,40.15266 2.10356,33.58805 12.82885,11.14957 4.47515,-2.00942 23.87799,12.72289 7.03663,8.13316 11.93807,4.36206 15.80968,7.07651 16.369,-14.34425 -16.93269,31.34698 -4.75603,22.5 z m -43.9107,-312.58752 c -19.35397,-3.31815 -53.57187,-0.44217 -15.68562,-27.79401 18.55389,-15.18595 119.07257,11.19914 37.28244,21.23679 -6.87407,3.12597 -16.10995,3.62598 -21.59682,6.55722 z M 559.44575,412.3403 c -76.08079,10.107 -9.12122,-22.15031 -9.84562,-20.89037 18.2071,-5.82881 72.55394,-5.99007 65.74382,16.48017 -6.66122,-13.5738 -12.01966,1.90751 -20.82371,4.14531 -11.26279,2.86276 -13.66835,2.15682 -16.95454,2.83908 -7.17006,-0.40758 -11.94545,-0.64025 -18.11995,-2.57419 z M 359.8891,365.55577 c -11.11392,4.02733 -25.05229,0.0321 -34.97715,3.92379 -22.87293,8.96882 -37.65064,23.93989 -41.84385,19.22366 -8.16311,-9.18129 41.30966,-54.48475 59.30325,-49.19811 9.56645,1.64363 36.48079,7.08132 54.84522,12.99489 13.08781,6.59067 -11.31968,10.45873 -20.21657,10.55902 7.04205,3.7065 -16.57693,3.11502 -17.1109,2.49675 z m 286.44943,-2.48921 c -28.2129,-27.2597 -68.91472,-6.29817 -102.67683,-5.29066 -7.58125,0.0507 -30.15706,4.95812 -32.5211,1.62971 -1.71655,-2.41679 17.57937,-13.11113 10.78291,-14.07381 16.15699,-10.70118 31.14901,-5.43311 34.09015,-13.3391 4.04135,5.14662 13.15912,1.0951 20.11012,-4.35709 8.74644,3.32887 34.25794,2.0452 45.45411,6.00883 7.97202,3.96256 33.40435,24.23427 32.42216,31.33242 l -7.66147,-1.91026 z M 731.13524,332.25 c 4.90781,-25.87769 -6.21259,-60.32158 -9.82659,-73.82124 -9.86357,-11.22727 -34.29436,-39.79353 -26.05865,-37.25728 -18.18978,-34.14409 -54.57984,-50.10914 -89.70862,-61.26631 -32.10226,-6.93677 -59.42421,-5.936 -90.76648,-3.91544 -8.45261,-7.99933 -32.21175,2.25569 -50.83322,-1.97175 -19.78411,6.27987 -36.74536,1.99077 -51.19173,4.06156 -12.29129,-4.11877 -70.7544,8.56301 -55.6423,5.92043 0.10328,9.77298 -35.59165,-4.27797 -32.78742,9.15651 -32.88602,8.93788 -42.00683,31.10647 -69.99275,50.18781 -14.21586,17.89234 -19.32201,52.60802 -31.64325,60.46235 -2.49206,-40.35107 -5.98168,-84.33781 14.09803,-121.01399 -10.72023,-28.6338 36.98672,-25.45003 26.91465,-47.70508 18.1901,-13.20411 35.22445,-8.47999 53.43686,-28.052985 21.95608,-14.123074 61.5351,-39.617847 78.39296,-38.835629 -25.51433,21.395593 24.04449,-6.82489 34.97327,-6.340937 33.47471,-2.315903 45.60993,2.083827 72.97477,-0.06828 38.68551,6.567836 78.54881,12.147688 115.0257,26.328829 37.20271,13.363353 73.56888,32.807232 91.84253,69.739902 31.13901,29.23754 20.52253,77.51343 25.08559,116.14153 -1.54058,24.09439 0.54206,61.95275 -4.29335,78.25 z"
+                              id="path1" />
+                        <path style="fill:none;stroke:#ffffff;stroke-width:1.3;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+                              d="m 443.61834,382.89963 c -5.49043,34.78751 -11.14474,69.56222 -15.33194,104.53717 -4.41613,18.53473 -25.45315,27.94793 -28.16299,47.17114 2.12146,10.56309 13.70516,13.82479 22.9618,14.91944 10.27635,0.37988 18.76994,6.45206 28.47898,8.8027 14.16819,3.23557 29.15348,-1.84658 39.83834,-11.32517 5.42016,-3.57063 19.75502,-5.28614 18.48886,4.30877 -5.72749,7.62356 8.63059,1.83277 12.60247,-0.28254 12.78982,-6.64105 23.47335,-22.21928 17.40955,-36.77971 -6.46985,-11.72376 -17.65801,-19.91462 -25.89411,-30.33889 -6.89345,-7.83481 -11.32445,-17.50523 -13.32762,-27.68713 -8.22957,-25.17181 -5.64925,-52.23397 -11.72673,-77.78064 -5.7962,-16.60527 -29.39765,-26.27661 -43.41144,-13.66979 -5.11934,4.7728 -2.28324,12.18506 -1.92517,18.12465 z"
+                              id="path2" />
+                        <path style="fill:none;stroke:#ffffff;stroke-width:1.3;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+                              d="m 255.85524,598.45593 c -24.56778,-27.45639 -19.69916,-69.32197 -35.21118,-101.39138 -5.24314,-19.57309 -16.10159,-71.91421 8.05074,-70.39269 13.52785,31.70757 7.20769,67.99699 19.38314,100.52321 4.8844,23.40558 9.06999,47.25149 7.7773,71.26086 z"
+                              id="path7" />
+                        <path style="fill:none;stroke:#ffffff;stroke-width:1.3;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+                              d="m 717.62138,416.20288 c 7.52508,-34.17615 58.5331,-17.2333 43.3315,15.34003 -0.41503,36.35386 2.28979,74.37821 -13.38774,108.15327 3.68873,25.85068 -35.11867,59.66765 -36.10944,17.62242 6.22492,-41.17882 12.50952,-82.94453 7.2492,-124.75621 -0.39587,-5.45634 -1.24159,-10.87649 -1.08352,-16.35951 z"
+                              id="path8" />
+                        <path style="fill:none;stroke:#ffffff;stroke-width:1.3;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+                              d="m 730.76463,530.11103 c 6.28554,-14.27574 16.20753,-27.22183 18.85634,-42.89987 1.15555,-6.68435 0.17982,-13.63305 -2.58187,-19.81072 -3.10364,-9.57318 -2.53061,-20.06651 -6.59473,-29.35618 -1.10575,-2.41882 -3.8277,-6.07385 -6.31118,-2.99264 -7.24506,4.86879 -10.68495,14.19187 -9.0519,22.6774 1.22259,7.3695 5.2015,14.20818 10.85465,19.06636 3.11915,6.17044 1.0932,13.39313 -2.20722,19.05186 -3.609,6.84759 -9.27339,13.23949 -9.32682,21.37183 0.004,5.11366 3.4972,9.02935 6.36273,12.89196 z"
+                              id="path9" />
+                        <path style="fill:none;stroke:#ffffff;stroke-width:1.3;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+                              d="m 585.09362,407.22166 c -8.50098,7.85297 -23.76356,6.47506 -32.55268,0.15057 -6.87781,-13.26157 12.19716,-19.50569 22.42451,-16.6097 9.13067,0.88481 11.22392,8.56858 10.12817,16.45913 z"
+                              id="path10" />
+                        <path style="fill:none;stroke:#ffffff;stroke-width:1.3;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+                              d="m 385.75435,417.95531 c -5.58503,9.41725 -20.24163,7.70326 -28.48869,3.28468 -10.52441,-6.24692 -5.99563,-22.82873 7.04844,-19.46807 9.84552,0.27699 31.19707,0.2327 21.44025,16.18339 z"
+                              id="path11" />
+                    </g>
+                </svg>
+
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- =========================
-     PROJECTS (kort med fade/stagger)
-========================= -->
-<section id="projects" class="section" aria-labelledby="projects-title">
-    <div class="container">
-        <h2 id="projects-title" class="reveal" style="text-align:center">My Projects</h2>
 
+
+<!-- TECH -->
+<section id="tech" class="section alt">
+    <div class="container">
+        <h2 class="reveal">Tech jag använder</h2>
+        <div class="tech-wrap">
+            <ul class="tech-icons reveal" role="list">
+                <li><span class="ti" data-label=".NET / ASP.NET"><i class="fa-brands fa-microsoft"></i></span></li>
+                <li><span class="ti" data-label="C#"><i class="fa-solid fa-code"></i></span></li>
+                <li><span class="ti" data-label="Entity Framework"><i class="fa-solid fa-database"></i></span></li>
+                <li><span class="ti" data-label="SQL"><i class="fa-solid fa-table"></i></span></li>
+                <li><span class="ti" data-label="JavaScript"><i class="fa-brands fa-js"></i></span></li>
+                <li><span class="ti" data-label="HTML5"><i class="fa-brands fa-html5"></i></span></li>
+                <li><span class="ti" data-label="CSS / SCSS"><i class="fa-brands fa-css3-alt"></i></span></li>
+                <li><span class="ti" data-label="Azure"><i class="fa-solid fa-cloud"></i></span></li>
+                <li><span class="ti" data-label="GitHub"><i class="fa-brands fa-github"></i></span></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- PROJEKT -->
+<section id="projects" class="section">
+    <div class="container">
+        <h2 class="reveal">Projekt</h2>
         <div class="grid">
             @foreach (var p in Model.Projects)
             {
-                <a class="card tilt reveal" asp-controller="Home" asp-action="Project" asp-route-slug="@p.Slug" aria-label="@p.Title">
+                <a class="card tilt reveal"
+                   asp-controller="Home" asp-action="Project" asp-route-slug="@p.Slug"
+                   aria-label="@p.Title">
                     <h3>@p.Title</h3>
-
                     @if (!string.IsNullOrWhiteSpace(p.Summary))
                     {
                         <p>@p.Summary</p>
                     }
-
                     @if (p.Techs != null && p.Techs.Any())
                     {
-                        <div class="chips" aria-label="Tekniker">
+                        <div class="chips" aria-label="Teknik">
                             @foreach (var t in p.Techs.Take(4))
                             {
                                 <span>@t</span>
                             }
                         </div>
                     }
+                    <span class="glare"></span>
                 </a>
             }
         </div>
-    </div>
-</section>
-
-<!-- =========================
-     SKILLS (ikonrutor som i videon)
-========================= -->
-<section id="skills" class="section alt" aria-labelledby="skills-title">
-    <div class="container">
-        <h2 id="skills-title" class="reveal" style="text-align:center">My Skills</h2>
-
-        <div class="skills-grid">
-            <div class="skill-card reveal">
-                <div class="skill-ico">HTML5</div>
-                <div class="skill-name">HTML</div>
-            </div>
-            <div class="skill-card reveal">
-                <div class="skill-ico">CSS3</div>
-                <div class="skill-name">CSS</div>
-            </div>
-            <div class="skill-card reveal">
-                <div class="skill-ico">JS</div>
-                <div class="skill-name">JavaScript</div>
-            </div>
-            <div class="skill-card reveal">
-                <div class="skill-ico">.NET</div>
-                <div class="skill-name">C# / ASP.NET Core</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- =========================
-     CONTACT (modern, din e-post)
-========================= -->
-<section id="contact" class="section" aria-labelledby="contact-title">
-    <div class="container">
-        <h2 id="contact-title" class="reveal" style="text-align:center">Contact</h2>
-        <p class="muted reveal" style="text-align:center;margin-top:4px">Hör av dig – jag svarar snabbt.</p>
-
-        <form method="post" asp-action="Contact" class="contact-form form-card reveal" novalidate style="margin-inline:auto">
-            <input type="text" name="company" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
-
-            <div class="form-row">
-                <div class="input-group">
-                    <label for="name">Namn</label>
-                    <input id="name" name="name" type="text" placeholder="Ditt namn" required />
-                </div>
-                <div class="input-group">
-                    <label for="email">E-post</label>
-                    <input id="email" name="email" type="email" placeholder="namn@exempel.se" required />
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label for="message">Meddelande</label>
-                <textarea id="message" name="message" rows="5" placeholder="Vad kan jag hjälpa till med?" required></textarea>
-            </div>
-
-            <div class="form-actions" style="justify-content:center">
-                <button class="btn" type="submit">Skicka</button>
-                <a class="btn-outline" href="mailto:harotehandel@gmail.com">Eller maila mig</a>
-            </div>
-        </form>
-
-        <p class="muted" style="text-align:center;margin-top:10px">
-            Direkt e-post: <a href="mailto:harotehandel@gmail.com">harotehandel@gmail.com</a>
-        </p>
     </div>
 </section>

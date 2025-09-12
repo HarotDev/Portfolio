@@ -8,57 +8,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@pageTitle</title>
     <meta name="description" content="Full-stack .NET-utvecklare. Portfölj, projekt och kontakt." />
+
+    <script>document.documentElement.classList.add('js');</script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Michroma&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous">
 
     <link rel="preload" href="~/assets/styles.css" as="style" asp-append-version="true" />
     <link rel="stylesheet" href="~/assets/styles.css" asp-append-version="true" />
+
     @RenderSection("Head", required: false)
 </head>
 <body>
-    <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
+    <canvas id="siteDots" aria-hidden="true"></canvas>
 
-    <header class="nav" role="banner">
-        <div class="container">
-            <a class="logo" asp-controller="Home" asp-action="Index">Harot Aziz</a>
-
-            <!-- Hamburger-->
-            <button class="nav-toggle"
-                    id="navToggle"
-                    aria-label="Meny"
-                    aria-controls="siteNav"
-                    aria-expanded="false">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-
-            <!-- Primary nav -->
-            <nav id="siteNav" aria-label="Huvudmeny">
-                <a href="#projects">Projekt</a>
-                <a href="#experience">Erfarenhet</a>
-                <a href="#contact" class="btn">Kontakt</a>
-                <a href="#about">Om mig</a>
+    <header class="site-header" role="banner" aria-label="Huvudnavigering">
+        <div class="nav-shell nav-mini">
+            <nav class="button-container" aria-label="Sektioner">
+                <a class="button" href="/#hero">Hem</a>
+                <a class="button" href="/#about">Om mig</a>
+                <a class="button" href="/#tech">Tech</a>
+                <a class="button" href="/#projects">Projekt</a>
             </nav>
         </div>
     </header>
 
-    <main role="main">
+    <main id="main" role="main">
         @RenderBody()
     </main>
 
     <footer class="footer">
-        <div class="container">© <span id="year"></span> Harot Aziz</div>
+        © <span id="year"></span> Harot Aziz
     </footer>
 
-    <button class="backtotop" id="backToTop" aria-label="Till toppen" title="Till toppen">↑</button>
-    <nav class="section-dots" aria-label="Sektioner">
-        <button class="dot" data-target="#projects" title="Projekt"></button>
-        <button class="dot" data-target="#experience" title="Erfarenhet"></button>
-        <button class="dot" data-target="#about" title="Om mig"></button>
-        <button class="dot" data-target="#contact" title="Kontakt"></button>
-    </nav>
+    <button id="toTop" class="to-top" aria-label="Till början" title="Till början">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+        <span class="sr-only">Till toppen</span>
+    </button>
 
     <script src="~/assets/main.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)

@@ -6,6 +6,12 @@
 
 <section class="case-hero">
     <div class="container">
+        <div class="case-breadcrumb reveal">
+            <a asp-controller="Home" asp-action="Index" class="crumb-link">
+                <i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i> Tillbaka
+            </a>
+        </div>
+
         <h1 class="case-title reveal">@Model.Title</h1>
 
         @if (!string.IsNullOrWhiteSpace(Model?.Summary))
@@ -16,11 +22,11 @@
         <div class="case-meta reveal">
             @if (!string.IsNullOrWhiteSpace(Model?.Role))
             {
-                <span><strong>Roll:</strong> @Model.Role</span>
+                <span class="meta-chip"><strong>Roll:</strong> @Model.Role</span>
             }
             @if (!string.IsNullOrWhiteSpace(Model?.Period))
             {
-                <span><strong>År:</strong> @Model.Period</span>
+                <span class="meta-chip"><strong>År:</strong> @Model.Period</span>
             }
             @if (Model?.Techs != null && Model.Techs.Any())
             {
@@ -37,7 +43,10 @@
         <div class="case-heroMedia">
             @if (!string.IsNullOrWhiteSpace(Model?.HeroImage))
             {
-                <img src="@Model.HeroImage" alt="@Model.Title" />
+                <figure class="hero-shot tilt reveal">
+                    <img src="@Model.HeroImage" alt="@Model.Title" />
+                    <span class="glare"></span>
+                </figure>
             }
             <canvas id="caseHeroWaves" aria-hidden="true"></canvas>
         </div>
@@ -45,11 +54,15 @@
         <div class="case-cta reveal">
             @if (!string.IsNullOrWhiteSpace(Model?.LiveUrl))
             {
-                <a href="@Model.LiveUrl" class="btn" target="_blank" rel="noopener">Se live</a>
+                <a href="@Model.LiveUrl" class="btn" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i> Se live
+                </a>
             }
             @if (!string.IsNullOrWhiteSpace(Model?.RepoUrl))
             {
-                <a href="@Model.RepoUrl" class="btn-outline" target="_blank" rel="noopener">Källkod</a>
+                <a href="@Model.RepoUrl" class="btn-outline" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-github" aria-hidden="true"></i> Källkod
+                </a>
             }
             <a asp-controller="Home" asp-action="Index" class="btn-outline">← Tillbaka</a>
         </div>
@@ -71,7 +84,7 @@
             </div>
             <div class="panel reveal">
                 <h3>Lärdomar</h3>
-                <p>Kort text om vad du lärde dig i detta case.</p>
+                <p>Det här caset gav mig praktisk erfarenhet i både arkitektur och UI-detaljer. Jag arbetade iterativt med prestanda, tillgänglighet och en renare utvecklarupplevelse.</p>
             </div>
         </div>
     </section>
@@ -87,6 +100,7 @@
                 {
                     <figure class="shot tilt reveal">
                         <img src="@img" alt="@Model.Title" loading="lazy" />
+                        <span class="glare"></span>
                     </figure>
                 }
             </div>
