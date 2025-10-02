@@ -3,7 +3,6 @@
     ViewData["Title"] = "Harot Aziz – Portfolio";
 }
 
-<!-- HERO -->
 <section id="hero" class="section hero hero-centered">
     <div class="container">
         <p class="eyebrow reveal">Hej! Jag är</p>
@@ -13,10 +12,9 @@
         </h1>
         
         <p class="tagline reveal">
-            Fullstack-utvecklare inom .NET som bygger tydliga gränssnitt och stabila backends.
+            <span id="tagSwap"></span>
         </p>
 
-        <!-- Sociala ikoner -->
         <div class="hero-social reveal">
             <a href="https://github.com/HarotDev" target="_blank" rel="noopener" aria-label="GitHub">
                 <i class="fa-brands fa-github"></i>
@@ -39,22 +37,42 @@
 </section>
 
 
-<!-- OM MIG -->
 <section id="about" class="section">
     <div class="container about-split">
-        <!-- Vänster: rubrik + text -->
         <div class="about-col about-textcol reveal">
-            <h2>Om mig</h2>
+            <h2 id="about-heading">Om mig</h2>
             <p class="about-text">
-                Teknikintresset började tidigt – jag ville alltid förstå vad som händer bakom skärmen.
-                Idag jobbar jag med <strong>C#/ASP.NET Core</strong> i backend och moderna
-                <strong>JavaScript-gränssnitt</strong> i frontend. Jag gillar att hitta bättre lösningar,
-                förbättra design och göra systemen smidigare att använda och utveckla vidare.
-                Här hittar du både projekt från min utbildning och flera egna sidoprojekt.
+                Jag är utbildad .NET-utvecklare med bakgrund i frontend. Under utbildningen fördjupade jag mig i backend och blev samtidigt vassare i frontend. Idag arbetar jag gärna fullstack och tar ett case från idé till driftsatt lösning. I backend bygger jag API:er med <strong>C#/ASP.NET Core</strong>, <strong>Entity Framework Core</strong> och <strong>SQL</strong>, sätter upp inloggning och behörigheter och håller koden ren och testbar. I frontend gör jag moderna gränssnitt med <strong>JavaScript</strong>, <strong>HTML5</strong> och <strong>CSS/SCSS</strong> som är snabba och tillgängliga. Jag jobbar i <strong>GitHub</strong>, använder CI/CD och deployar till <strong>Azure</strong>. Behöver du en stabil webblösning eller vill vidareutveckla en befintlig tjänst så hjälper jag dig gärna.
             </p>
+
+
+            @{
+                var projCount = Model?.Projects?.Count() ?? 0;
+            }
+            <ul class="mini-stats" role="list">
+                <li class="ms reveal">
+                    <i class="fa-solid fa-code" aria-hidden="true"></i>
+                    <span class="ms-num" data-count-from="0" data-count-to="3" data-suffix=" år">0</span>
+                    <span class="ms-label">Frontend</span>
+                </li>
+                <li class="ms reveal">
+                    <i class="fa-solid fa-database" aria-hidden="true"></i>
+                    <span class="ms-num" data-count-from="0" data-count-to="1" data-suffix=" år">0</span>
+                    <span class="ms-label">Backend</span>
+                </li>
+                <li class="ms reveal">
+                    <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+                    <span class="ms-num" data-count-from="0" data-count-to="@projCount" data-suffix="+">0</span>
+                    <span class="ms-label">Projekt</span>
+                </li>
+                <li class="ms reveal">
+                    <i class="fa-solid fa-wrench" aria-hidden="true"></i>
+                    <span class="ms-num" data-count-from="0" data-count-to="12" data-suffix="+">0</span>
+                    <span class="ms-label">Tech</span>
+                </li>
+            </ul>
         </div>
 
-        <!-- Höger: SVG line-draw (din kod) -->
         <div class="about-col about-artcol reveal">
             <div class="line-stage" id="aboutStage" aria-hidden="true">
                 <svg version="1.1"
@@ -95,55 +113,190 @@
     </div>
 </section>
 
-
-
-<!-- TECH -->
-<section id="tech" class="section alt">
+<section id="tech" class="section tools-section">
     <div class="container">
-        <h2 class="reveal">Tech jag använder</h2>
-        <div class="tech-wrap">
-            <ul class="tech-icons reveal" role="list">
-                <li><span class="ti" data-label=".NET / ASP.NET"><i class="fa-brands fa-microsoft"></i></span></li>
-                <li><span class="ti" data-label="C#"><i class="fa-solid fa-code"></i></span></li>
-                <li><span class="ti" data-label="Entity Framework"><i class="fa-solid fa-database"></i></span></li>
-                <li><span class="ti" data-label="SQL"><i class="fa-solid fa-table"></i></span></li>
-                <li><span class="ti" data-label="JavaScript"><i class="fa-brands fa-js"></i></span></li>
-                <li><span class="ti" data-label="HTML5"><i class="fa-brands fa-html5"></i></span></li>
-                <li><span class="ti" data-label="CSS / SCSS"><i class="fa-brands fa-css3-alt"></i></span></li>
-                <li><span class="ti" data-label="Azure"><i class="fa-solid fa-cloud"></i></span></li>
-                <li><span class="ti" data-label="GitHub"><i class="fa-brands fa-github"></i></span></li>
-            </ul>
+        <h2>Stack &amp; Verktyg</h2>
+
+        <div class="tool-board only-desktop">
+            <article class="tool-badge">
+                <div class="tool-ico" aria-hidden="true"><i class="fa-brands fa-microsoft"></i></div>
+                <div class="tool-name">.NET / ASP.NET Core</div>
+                <div class="tool-note">Backend</div>
+            </article>
+            <article class="tool-badge">
+                <div class="tool-ico" aria-hidden="true"><i class="fa-solid fa-database"></i></div>
+                <div class="tool-name">EF Core</div>
+                <div class="tool-note">ORM</div>
+            </article>
+            <article class="tool-badge">
+                <div class="tool-ico" aria-hidden="true"><i class="fa-solid fa-plug"></i></div>
+                <div class="tool-name">REST APIs</div>
+                <div class="tool-note">Integration</div>
+            </article>
+            <article class="tool-badge">
+                <div class="tool-ico" aria-hidden="true"><i class="fa-solid fa-table"></i></div>
+                <div class="tool-name">SQL</div>
+                <div class="tool-note">Databas</div>
+            </article>
+            <article class="tool-badge">
+                <div class="tool-ico" aria-hidden="true"><i class="fa-solid fa-cloud"></i></div>
+                <div class="tool-name">Azure</div>
+                <div class="tool-note">Cloud</div>
+            </article>
+            <article class="tool-badge">
+                <div class="tool-ico" aria-hidden="true"><i class="fa-brands fa-js"></i></div>
+                <div class="tool-name">JavaScript</div>
+                <div class="tool-note">Frontend</div>
+            </article>
+            <article class="tool-badge">
+                <div class="tool-ico" aria-hidden="true"><i class="fa-brands fa-html5"></i></div>
+                <div class="tool-name">HTML5</div>
+                <div class="tool-note">Markup</div>
+            </article>
+            <article class="tool-badge">
+                <div class="tool-ico" aria-hidden="true"><i class="fa-brands fa-css3-alt"></i></div>
+                <div class="tool-name">CSS / SCSS</div>
+                <div class="tool-note">Styling</div>
+            </article>
+            <article class="tool-badge">
+                <div class="tool-ico" aria-hidden="true"><i class="fa-brands fa-github"></i></div>
+                <div class="tool-name">GitHub</div>
+                <div class="tool-note">Repo</div>
+            </article>
+            <article class="tool-badge">
+                <div class="tool-ico" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
+                <div class="tool-name">Visual Studio</div>
+                <div class="tool-note">IDE</div>
+            </article>
+            <article class="tool-badge">
+                <div class="tool-ico" aria-hidden="true"><i class="fa-brands fa-figma"></i></div>
+                <div class="tool-name">Figma</div>
+                <div class="tool-note">Design</div>
+            </article>
+        </div>
+
+        <div class="tools-scroller only-mobile" aria-label="Teknik-kort i rullning">
+            <div class="scroller__inner">
+                <article class="tool-badge">
+                    <div class="tool-ico" aria-hidden="true"><i class="fa-brands fa-microsoft"></i></div>
+                    <div class="tool-name">.NET / ASP.NET Core</div>
+                    <div class="tool-note">Backend</div>
+                </article>
+                <article class="tool-badge">
+                    <div class="tool-ico" aria-hidden="true"><i class="fa-solid fa-plug"></i></div>
+                    <div class="tool-name">REST APIs</div>
+                    <div class="tool-note">Integration</div>
+                </article>
+                <article class="tool-badge">
+                    <div class="tool-ico" aria-hidden="true"><i class="fa-solid fa-table"></i></div>
+                    <div class="tool-name">SQL</div>
+                    <div class="tool-note">Databas</div>
+                </article>
+                <article class="tool-badge">
+                    <div class="tool-ico" aria-hidden="true"><i class="fa-solid fa-cloud"></i></div>
+                    <div class="tool-name">Azure</div>
+                    <div class="tool-note">Cloud</div>
+                </article>
+                <article class="tool-badge">
+                    <div class="tool-ico" aria-hidden="true"><i class="fa-brands fa-js"></i></div>
+                    <div class="tool-name">JavaScript</div>
+                    <div class="tool-note">Frontend</div>
+                </article>
+                <article class="tool-badge">
+                    <div class="tool-ico" aria-hidden="true"><i class="fa-brands fa-html5"></i></div>
+                    <div class="tool-name">HTML5</div>
+                    <div class="tool-note">Markup</div>
+                </article>
+                <article class="tool-badge">
+                    <div class="tool-ico" aria-hidden="true"><i class="fa-brands fa-css3-alt"></i></div>
+                    <div class="tool-name">CSS / SCSS</div>
+                    <div class="tool-note">Styling</div>
+                </article>
+                <article class="tool-badge">
+                    <div class="tool-ico" aria-hidden="true"><i class="fa-brands fa-github"></i></div>
+                    <div class="tool-name">GitHub</div>
+                    <div class="tool-note">Repo</div>
+                </article>
+                <article class="tool-badge">
+                    <div class="tool-ico" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
+                    <div class="tool-name">Visual Studio</div>
+                    <div class="tool-note">IDE</div>
+                </article>
+                <article class="tool-badge">
+                    <div class="tool-ico" aria-hidden="true"><i class="fa-brands fa-figma"></i></div>
+                    <div class="tool-name">Figma</div>
+                    <div class="tool-note">Design</div>
+                </article>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- PROJEKT -->
-<section id="projects" class="section">
+
+
+
+<section id="projects" class="section projects-compact">
     <div class="container">
-        <h2 class="reveal">Projekt</h2>
-        <div class="grid">
-            @foreach (var p in Model.Projects)
-            {
-                <a class="card tilt reveal"
-                   asp-controller="Home" asp-action="Project" asp-route-slug="@p.Slug"
-                   aria-label="@p.Title">
-                    <h3>@p.Title</h3>
-                    @if (!string.IsNullOrWhiteSpace(p.Summary))
-                    {
-                        <p>@p.Summary</p>
-                    }
-                    @if (p.Techs != null && p.Techs.Any())
-                    {
-                        <div class="chips" aria-label="Teknik">
-                            @foreach (var t in p.Techs.Take(4))
+        <h2 class="reveal">Vad jag har byggt</h2>
+
+        @if (Model?.Projects is { Count: > 0 })
+        {
+            <div class="pc-grid">
+                @foreach (var p in Model.Projects)
+                {
+                    var techs = (p.Techs ?? new List<string>());
+                    var techShown = techs.Take(3).ToList();
+                    var techMore = Math.Max(0, techs.Count - techShown.Count);
+                    var href = Url.Action("Project", "Home", new { slug = p.Slug });
+
+                    <article class="pcard tilt reveal">
+                        <div class="pc-body">
+                            <h3 class="pc-title">
+                                <a href="@href" aria-label="@p.Title">@p.Title</a>
+                            </h3>
+
+                            @if (!string.IsNullOrWhiteSpace(p.Summary))
                             {
-                                <span>@t</span>
+                                <p class="pc-summary">@p.Summary</p>
+                            }
+
+                            @if (techShown.Any())
+                            {
+                                <div class="pc-tech" aria-label="Teknik">
+                                    @foreach (var t in techShown)
+                                    {
+                                        <span class="pc-pill">@t</span>
+                                    }
+                                    @if (techMore > 0)
+                                    {
+                                        <span class="pc-pill pc-more">+@techMore</span>
+                                    }
+                                </div>
                             }
                         </div>
-                    }
-                    <span class="glare"></span>
-                </a>
-            }
-        </div>
+                    </article>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="muted">Inga projekt att visa just nu.</p>
+        }
     </div>
 </section>
+
+
+<section id="contact" class="section">
+    <div class="container" style="text-align:center">
+        <h2 class="reveal">Behöver du en fullstackare?</h2>
+
+        <a href="mailto:harotaziz@icloud.com?subject=Förfrågan%20från%20portfolio&body=Hej%20Harot,%0D%0A%0D%0AJag%20är%20intresserad%20av%20att%20höra%20mer.%0D%0A%0D%0AMvh,"
+           class="btn reveal"
+           aria-label="Kontakta mig via e-post">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            Kontakta mig
+        </a>
+
+    </div>
+</section>
+

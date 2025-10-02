@@ -7,14 +7,12 @@ function boot() {
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
 
-    // Header offset (så inget hamnar under nav)
     (function headerOffset() {
         const header = document.querySelector('.site-header'); if (!header) return;
         const set = () => document.documentElement.style.setProperty('--header-offset', (header.offsetHeight + 12) + 'px');
         set(); window.addEventListener('resize', set, { passive: true });
     })();
 
-    // Smooth anchor + aktiv knapp
     const navButtons = Array.from(document.querySelectorAll('.nav-pills .button'));
     const sectionIdsFromNav = navButtons.map(a => (a.getAttribute('href') || '').replace('/', '')).filter(h => /^#\w/.test(h));
 
@@ -37,7 +35,6 @@ function boot() {
         });
     }
 
-    // Dölj/visa header vid scrollriktning
     (function hideHeaderOnScroll() {
         const header = document.querySelector('.site-header'); if (!header) return;
         let lastY = window.scrollY || 0, hidden = false;
@@ -56,7 +53,6 @@ function boot() {
         onScroll();
     })();
 
-    // Aktiv länk via IntersectionObserver
     (function observeActiveSection() {
         if (!sectionIdsFromNav.length) return;
         const targets = sectionIdsFromNav.map(id => document.querySelector(id)).filter(Boolean);
@@ -70,7 +66,6 @@ function boot() {
         if (location.hash) setActiveNavByHash(location.hash);
     })();
 
-    // Reveal
     (function reveal() {
         const els = [...document.querySelectorAll('.reveal')]; if (!els.length) return;
         const io = new IntersectionObserver(entries => {
@@ -92,25 +87,6 @@ function boot() {
     })();
 
 
-
-    // Tilt + glare (projektkort)
-    (function tilt() {
-        document.querySelectorAll('.tilt').forEach(card => {
-            let glare = card.querySelector('.glare');
-            if (!glare) { glare = document.createElement('span'); glare.className = 'glare'; card.appendChild(glare); }
-            card.addEventListener('mousemove', e => {
-                const r = card.getBoundingClientRect();
-                const px = (e.clientX - r.left) / r.width - .5;
-                const py = (e.clientY - r.top) / r.height - .5;
-                card.style.transform = `perspective(900px) rotateY(${px * 12}deg) rotateX(${py * -12}deg)`;
-                glare.style.setProperty('--mx', ((e.clientX - r.left) / r.width) * 100 + '%');
-                glare.style.setProperty('--my', ((e.clientY - r.top) / r.height) * 100 + '%');
-            });
-            card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(900px) rotateY(0) rotateX(0)'; });
-        });
-    })();
-
-    // ===== Site-wide dots + lätt parallax =====
     (function siteDots() {
         const canvas = document.getElementById('siteDots'); if (!canvas) return;
         const ctx = canvas.getContext('2d');
@@ -139,10 +115,8 @@ function boot() {
         function draw(scrollY) {
             ctx.clearRect(0, 0, w, h);
 
-            // Parallax offset
             const offsetY = (scrollY * 0.12) % h;
 
-            // Dots
             ctx.globalAlpha = .9;
             points.forEach(p => {
                 p.x += p.vx; p.y += p.vy;
@@ -155,7 +129,6 @@ function boot() {
                 ctx.fill();
             });
 
-            // Lines
             ctx.globalAlpha = .14;
             ctx.strokeStyle = '#a78bfa';
             for (let i = 0; i < points.length; i++) {
@@ -182,7 +155,6 @@ function boot() {
         loop();
     })();
 
-    // ===== Typing-effekt: mjuk & lite långsammare =====
     (function typeHero() {
         const nameEl = document.getElementById('typeName');
         const caret = document.querySelector('.type-line .caret');
@@ -190,7 +162,7 @@ function boot() {
 
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const name = 'Harot Aziz';
-        const speed = 100; 
+        const speed = 100;
 
         nameEl.classList.add('grad-name');
         nameEl.textContent = '';
@@ -224,12 +196,10 @@ function boot() {
                 if (caret) caret.classList.add('done');
             }
         }
-
-        // Start
         step();
     })();
 
-    // Till toppen
+
     (function toTop() {
         const btn = document.getElementById('toTop'); if (!btn) return;
         let ticking = false;
@@ -251,7 +221,6 @@ function boot() {
         toggle();
     })();
 
-    // === About line-draw: starta först när sektionen syns ===
     (function lineDrawAbout() {
         const stage = document.getElementById('aboutStage');
         const svg = document.getElementById('aboutSvg');
@@ -259,14 +228,13 @@ function boot() {
 
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const rootStyles = getComputedStyle(document.documentElement);
-        const dur = parseFloat(rootStyles.getPropertyValue('--duration')) || 3.2;
-        const stagger = parseFloat(rootStyles.getPropertyValue('--stagger')) || 0.08;
+        const dur = parseFloat(rootStyles.getPropertyValue('--duration')) || 5.0;
+        const stagger = parseFloat(rootStyles.getPropertyValue('--stagger')) || 0.1;
 
         function start() {
             const paths = svg.querySelectorAll('path');
             let delay = 0;
             paths.forEach(p => {
-                // säkerställ stroke följer variablerna
                 p.style.stroke = rootStyles.getPropertyValue('--stroke') || '#fff';
                 p.style.strokeWidth = rootStyles.getPropertyValue('--stroke-width') || '4.3';
                 p.style.fill = 'none';
@@ -279,7 +247,7 @@ function boot() {
                 p.style.strokeDashoffset = len;
 
                 if (!prefersReduced) {
-                    const jitter = (Math.random() * 0.35 - 0.15); // liten variation
+                    const jitter = (Math.random() * 0.35 - 0.15);
                     p.classList.add('draw');
                     p.style.animationDuration = (dur + jitter).toFixed(2) + 's';
                     p.style.animationDelay = delay.toFixed(2) + 's';
@@ -298,6 +266,7 @@ function boot() {
         }, { threshold: 0.2 });
         io.observe(stage);
     })();
+
 
     (() => {
         const cvs = document.getElementById('caseHeroWaves');
@@ -351,4 +320,216 @@ function boot() {
         });
     })();
 
+    (function () {
+        const els = document.querySelectorAll('.mini-stats .ms-num');
+        if (!els.length) return;
+
+        function animate(el) {
+            const from = +el.dataset.countFrom || 0;
+            const to = +el.dataset.countTo || 0;
+            const suf = el.dataset.suffix || '';
+            const dur = 900; // ms
+            const t0 = performance.now();
+            function step(t) {
+                const k = Math.min(1, (t - t0) / dur);
+                const ease = 1 - Math.pow(1 - k, 3);
+                const val = Math.floor(from + (to - from) * ease);
+                el.textContent = val + suf;
+                if (k < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        const io = ('IntersectionObserver' in window)
+            ? new IntersectionObserver((entries) => {
+                entries.forEach(en => {
+                    if (en.isIntersecting) {
+                        animate(en.target.querySelector('.ms-num'));
+                        io.unobserve(en.target);
+                    }
+                });
+            }, { threshold: .5 })
+            : null;
+
+        document.querySelectorAll('.mini-stats .ms').forEach(item => {
+            if (io) { io.observe(item); } else { animate(item.querySelector('.ms-num')); }
+        });
+    })();
+
+    // (Kontaktformulär-kod borttagen)
+
+    (() => {
+        const host = document.getElementById('tagSwap');
+        if (!host) return;
+
+        const words = ["Fullstack-utvecklare (.NET)"];
+        const t = document.createElement('span');
+        t.id = 'tagText';
+        const c = document.createElement('span');
+        c.id = 'tagCaret';
+        t.textContent = "";
+        host.textContent = "";
+        host.appendChild(t);
+        host.appendChild(c);
+
+        function measurePx(str, el) {
+            const cv = measurePx._cv || (measurePx._cv = document.createElement('canvas'));
+            const ctx = cv.getContext('2d');
+            const cs = getComputedStyle(el);
+            ctx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+            return ctx.measureText(str).width;
+        }
+        const longest = words.reduce((a, b) => (a.length >= b.length ? a : b));
+        const px = Math.ceil(measurePx(longest, host)) + 4;
+        host.style.minWidth = px + 'px';
+
+        const typeMs = 60, delMs = 40, holdMs = 1300, gapMs = 500;
+        let wi = 0, ci = 0, deleting = false;
+
+        function tick() {
+            const w = words[wi];
+            if (!deleting) {
+                ci = Math.min(ci + 1, w.length);
+                t.textContent = w.slice(0, ci);
+                if (ci === w.length) { deleting = true; setTimeout(tick, holdMs); }
+                else setTimeout(tick, typeMs);
+            } else {
+                ci = Math.max(ci - 1, 0);
+                t.textContent = w.slice(0, ci);
+                if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; setTimeout(tick, gapMs); }
+                else setTimeout(tick, delMs);
+            }
+        }
+        function startWhenNameDone() {
+            const caret = document.querySelector('h1 .caret');
+            if (caret && caret.classList.contains('done')) {
+                setTimeout(tick, 100);
+            } else {
+                setTimeout(startWhenNameDone, 80);
+            }
+        }
+
+        startWhenNameDone();
+    })();
+
+
+    (() => {
+        const navLinks = Array.from(document.querySelectorAll('.button-container a, .mobile-nav a'));
+
+        navLinks.forEach(link => {
+            const url = new URL(link.href, location.href);
+            const hash = url.hash;
+            if (!hash) return;
+
+            const samePage = url.pathname === location.pathname;
+
+            link.addEventListener('click', (e) => {
+                if (!samePage) return;
+                const target = document.querySelector(hash);
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                history.replaceState(null, '', hash);
+            });
+        });
+
+    })();
+
+
+    (() => {
+        "use strict";
+
+        const BP = 640;
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let state = { mode: null, originalCount: 0, placeholder: null };
+
+        function isMobile() { return window.matchMedia(`(max-width:${BP}px)`).matches; }
+
+        function toMobile() {
+            const board = document.querySelector('#tech .tool-board');
+            if (!board) return;
+
+            let scroller = document.querySelector('#tech .tools-scroller');
+            if (!scroller) {
+                scroller = document.createElement('div');
+                scroller.className = 'tools-scroller';
+                const inner = document.createElement('div');
+                inner.className = 'scroller__inner';
+                scroller.appendChild(inner);
+                const h2 = document.querySelector('#tech h2');
+                (h2?.parentElement || board.parentElement).insertBefore(scroller, board);
+            }
+
+            const inner = scroller.querySelector('.scroller__inner');
+
+            const cards = Array.from(board.children);
+            state.originalCount = cards.length;
+
+            if (!state.placeholder) {
+                state.placeholder = document.createComment('tool-board-placeholder');
+                board.parentElement.insertBefore(state.placeholder, board);
+            }
+
+            cards.forEach(card => inner.appendChild(card));
+            board.remove();
+
+            if (!inner.dataset.loopReady) {
+                cards.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    clone.setAttribute('aria-hidden', 'true');
+                    inner.appendChild(clone);
+                });
+                inner.dataset.loopReady = '1';
+            }
+
+            if (prefersReduced) {
+                inner.style.animation = 'none';
+            }
+
+            state.mode = 'mobile';
+        }
+
+        function toDesktop() {
+            const scroller = document.querySelector('#tech .tools-scroller');
+            if (!scroller) return;
+            const inner = scroller.querySelector('.scroller__inner');
+
+            let board = document.createElement('div');
+            board.className = 'tool-board';
+
+            const items = Array.from(inner.children).slice(0, state.originalCount);
+            items.forEach(item => board.appendChild(item));
+
+            if (state.placeholder && state.placeholder.parentNode) {
+                state.placeholder.parentNode.insertBefore(board, state.placeholder.nextSibling);
+            } else {
+                scroller.parentElement.appendChild(board);
+            }
+
+            scroller.remove();
+
+            state.mode = 'desktop';
+        }
+
+        function sync() {
+            const wantMobile = isMobile();
+            if (state.mode === null) {
+                wantMobile ? toMobile() : (state.mode = 'desktop');
+                return;
+            }
+            if (wantMobile && state.mode !== 'mobile') toMobile();
+            if (!wantMobile && state.mode !== 'desktop') toDesktop();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', sync, { once: true });
+        } else { sync(); }
+
+        let raf = 0;
+        window.addEventListener('resize', () => {
+            if (raf) cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(sync);
+        }, { passive: true });
+
+    })();
 }

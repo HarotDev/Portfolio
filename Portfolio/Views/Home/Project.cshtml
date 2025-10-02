@@ -4,15 +4,10 @@
     ViewData["Title"] = (Model?.Title ?? "Projekt") + " – Case";
 }
 
-<section class="case-hero">
+<section id="case" class="section case-hero">
     <div class="container">
-        <div class="case-breadcrumb reveal">
-            <a asp-controller="Home" asp-action="Index" class="crumb-link">
-                <i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i> Tillbaka
-            </a>
-        </div>
-
-        <h1 class="case-title reveal">@Model.Title</h1>
+       
+        <h3 class="case-title reveal">@Model.Title</h3>
 
         @if (!string.IsNullOrWhiteSpace(Model?.Summary))
         {
@@ -40,10 +35,10 @@
             }
         </div>
 
-        <div class="case-heroMedia">
+        <div class="case-heroMedia reveal">
             @if (!string.IsNullOrWhiteSpace(Model?.HeroImage))
             {
-                <figure class="hero-shot tilt reveal">
+                <figure class="hero-shot tilt">
                     <img src="@Model.HeroImage" alt="@Model.Title" />
                     <span class="glare"></span>
                 </figure>

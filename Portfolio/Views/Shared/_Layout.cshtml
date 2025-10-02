@@ -32,9 +32,21 @@
                 <a class="button" href="/#about">Om mig</a>
                 <a class="button" href="/#tech">Tech</a>
                 <a class="button" href="/#projects">Projekt</a>
+                <a class="button" href="/#contact">Kontakt</a>
             </nav>
         </div>
     </header>
+
+    <nav class="mobile-nav" aria-label="Mobilmeny">
+        <ul>
+            <li><a href="/#hero" class="is-active"><i class="fa-solid fa-house"></i><span>Hem</span></a></li>
+            <li><a href="/#about"><i class="fa-solid fa-user"></i><span>Om mig</span></a></li>
+            <li><a href="/#tech"><i class="fa-solid fa-microchip"></i><span>Tech</span></a></li>
+            <li><a href="/#projects"><i class="fa-solid fa-folder-open"></i><span>Projekt</span></a></li>
+            <li><a href="/#contact"><i class="fa-solid fa-envelope"></i><span>Kontakt</span></a></li>
+        </ul>
+    </nav>
+
 
     <main id="main" role="main">
         @RenderBody()
@@ -51,5 +63,7 @@
 
     <script src="~/assets/main.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>

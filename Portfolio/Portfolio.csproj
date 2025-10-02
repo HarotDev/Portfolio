@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Content\MinContent.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\img\BRFViggen\Bokningssystem.png" />
+    <None Include="wwwroot\img\BRFViggen\HomepageBRFViggen.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
