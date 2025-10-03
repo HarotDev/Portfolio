@@ -13,7 +13,6 @@ namespace Portfolio.Content
 
         public static readonly List<ProjectVM> Projects = new()
         {
-
             new ProjectVM
             {
                 Slug = "hsb-finspang-webbplats",
@@ -29,6 +28,13 @@ namespace Portfolio.Content
                     "Identity med rollbaserad åtkomst (Admin/Användare)",
                     "Kalendersystem med bokningslogik",
                     "CRUD-hantering av nyheter, faciliteter och tider"
+                },
+                Learnings = new[]
+                {
+                    "Samtidighet i EF Core (optimistic concurrency) för säkra bokningar",
+                    "Policy/role-baserad auktorisering med Identity + claims",
+                    "Affärsregler för bokningsfönster, spärrtider och avbokningar",
+                    "Strukturerad loggning för felsökning i drift"
                 },
                 Gallery = new[]
                 {
@@ -51,9 +57,16 @@ namespace Portfolio.Content
                 Bullets = new []
                 {
                     "Responsiv layout med CSS Grid/Flexbox",
-                    "Client-side effekter via JavaScript (IntersectionObserver, typing effect)",
+                    "Client-side effekter via IntersectionObserver & typing",
                     "CI/CD pipeline med GitHub Actions",
                     "Deploy automatiserad till Fly.io"
+                },
+                Learnings = new[]
+                {
+                    "Prestanda i UI-effekter (undvika layout thrash, observera rätt thresholds)",
+                    "Tillgänglighet: fokus, aria-attribut och färgkontrast",
+                    "Docker publish & minimering av image-storlek",
+                    "Fly.io tuning (PORT, health checks, scale)"
                 },
                 Gallery = new []
                 {
@@ -81,6 +94,13 @@ namespace Portfolio.Content
                     "Responsiv design anpassad för alla enheter",
                     "CI/CD med GitHub Actions → Fly.io"
                 },
+                Learnings = new[]
+                {
+                    "i18n med .resx + RTL-stöd och kulturväxling",
+                    "SEO per språk (hreflang, localized meta)",
+                    "Modulär vy-komposition för snabb återanvändning",
+                    "Bildoptimering & lazy loading för bättre Web Vitals"
+                },
                 Gallery = new[]
                 {
                     "/img/Tasmim/tasmim1.png",
@@ -106,6 +126,13 @@ namespace Portfolio.Content
                     "Responsiva sektioner med lazy loading",
                     "Flerspråkig konfiguration i Shopify",
                     "Optimerad prestanda och UX för e-handel"
+                },
+                Learnings = new[]
+                {
+                    "Liquid-scheman & blocks för redaktörsvänlig moduluppbyggnad",
+                    "Metafields & dynamiskt innehåll utan koddeploy",
+                    "Bild-CDN, srcset och caching för snabba sidor",
+                    "Konverteringsfokus i UI (CTA, hierarki, varukorgsflöde)"
                 },
                 Gallery = new []
                 {

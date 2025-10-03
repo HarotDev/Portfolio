@@ -6,7 +6,6 @@
 
 <section id="case" class="section case-hero">
     <div class="container">
-       
         <h3 class="case-title reveal">@Model.Title</h3>
 
         @if (!string.IsNullOrWhiteSpace(Model?.Summary))
@@ -64,23 +63,35 @@
     </div>
 </section>
 
-@if (Model?.Bullets != null && Model.Bullets.Any())
+@if ((Model?.Bullets != null && Model.Bullets.Any()) || (Model?.Learnings != null && Model.Learnings.Any()))
 {
     <section class="section">
         <div class="container two">
-            <div class="panel reveal">
-                <h3>Mål & resultat</h3>
-                <ul class="bullets">
-                    @foreach (var b in Model.Bullets)
-                    {
-                        <li>@b</li>
-                    }
-                </ul>
-            </div>
-            <div class="panel reveal">
-                <h3>Lärdomar</h3>
-                <p>Det här caset gav mig praktisk erfarenhet i både arkitektur och UI-detaljer. Jag arbetade iterativt med prestanda, tillgänglighet och en renare utvecklarupplevelse.</p>
-            </div>
+            @if (Model?.Bullets != null && Model.Bullets.Any())
+            {
+                <div class="panel reveal">
+                    <h3>Mål & resultat</h3>
+                    <ul class="bullets">
+                        @foreach (var b in Model.Bullets)
+                        {
+                            <li>@b</li>
+                        }
+                    </ul>
+                </div>
+            }
+
+            @if (Model?.Learnings != null && Model.Learnings.Any())
+            {
+                <div class="panel reveal">
+                    <h3>Lärdomar</h3>
+                    <ul class="bullets">
+                        @foreach (var l in Model.Learnings)
+                        {
+                            <li>@l</li>
+                        }
+                    </ul>
+                </div>
+            }
         </div>
     </section>
 }

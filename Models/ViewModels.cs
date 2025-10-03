@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 
-
 namespace Portfolio.Models
 {
     public class HomeIndexVM
@@ -40,5 +39,6 @@ namespace Portfolio.Models
         public IEnumerable<string> Gallery { get; set; } = new List<string>();
         public string? RepoUrl { get; set; }
         public string? LiveUrl { get; set; }
+        public IEnumerable<string> Learnings { get; set; } = new List<string>();
     }
 }
