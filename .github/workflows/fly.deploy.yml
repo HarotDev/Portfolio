@@ -1,0 +1,31 @@
+name: Fly Deploy
+
+on:
+  push:
+    # ...men bara för 'development'-branchen.
+    # Ändra detta till 'main' om du använder den branchen istället.
+    branches:
+      - development
+
+jobs:
+  deploy:
+    name: Deploy app to Fly.io
+    runs-on: ubuntu-latest
+
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    
+    steps:
+      # Steg 1: Checka ut koden från din repository.
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy to Fly.io
+        run: flyctl deploy --remote-only
+        env:
+          # Använder den token du sparade i GitHub Secrets.
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
