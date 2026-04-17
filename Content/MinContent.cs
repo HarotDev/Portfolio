@@ -14,36 +14,36 @@ namespace Portfolio.Content
         public static readonly List<ProjectVM> Projects = new()
         {
             new ProjectVM
-            {
-                Slug = "hsb-finspang-webbplats",
-                Title = "HSB Finspång – Webbplats",
-                Summary = "Examensprojekt under praktik 2025: system för hyresbostadsförening där boende bokar tvättstuga och andra resurser. Admin kan hantera faciliteter, nyheter, medlemmar, roller och tider. OBS: Källkoden är privat för skolan och kan inte delas offentligt.",
-                HeroImage = "/img/BRFViggen/HomepageBRFViggen.png",
-                Role = "Fullstack",
-                Period = "2025",
-                Techs = new[] { "ASP.NET Core", "EF Core", "SQL", "Identity", "JavaScript" },
-                Bullets = new[]
-                {
-                    "Entity Framework Core med code-first migrationer",
-                    "Identity med rollbaserad åtkomst (Admin/Användare)",
-                    "Kalendersystem med bokningslogik",
-                    "CRUD-hantering av nyheter, faciliteter och tider"
-                },
-                Learnings = new[]
-                {
-                    "Samtidighet i EF Core (optimistic concurrency) för säkra bokningar",
-                    "Policy/role-baserad auktorisering med Identity + claims",
-                    "Affärsregler för bokningsfönster, spärrtider och avbokningar",
-                    "Strukturerad loggning för felsökning i drift"
-                },
-                Gallery = new[]
-                {
-                    "/img/BRFViggen/HomepageBRFViggen.png",
-                    "/img/BRFViggen/Bokningssystem.png"
-                },
-                RepoUrl = null,
-                LiveUrl = "https://hsb2025.lexlink.se/"
-            },
+{
+    Slug = "hsb-finspang-webbplats",
+    Title = "HSB Finspång – Webbplats",
+    Summary = "Examensprojekt under praktik 2025: system för hyresbostadsförening där boende bokar tvättstuga och andra resurser. Admin kan hantera faciliteter, nyheter, medlemmar, roller och tider. Projektet utvecklades i samarbete med skola/verksamhet och källkoden är därför inte offentlig.",
+    HeroImage = "/img/BRFViggen/HomepageBRFViggen.png",
+    Role = "Fullstack",
+    Period = "2025",
+    Techs = new[] { "ASP.NET Core", "EF Core", "SQL", "Identity", "JavaScript" },
+    Bullets = new[]
+    {
+        "Entity Framework Core med code-first migrationer",
+        "Identity med rollbaserad åtkomst (Admin/Användare)",
+        "Kalendersystem med bokningslogik",
+        "CRUD-hantering av nyheter, faciliteter och tider"
+    },
+    Learnings = new[]
+    {
+        "Samtidighet i EF Core (optimistic concurrency) för säkra bokningar",
+        "Policy/role-baserad auktorisering med Identity + claims",
+        "Affärsregler för bokningsfönster, spärrtider och avbokningar",
+        "Strukturerad loggning för felsökning i drift"
+    },
+    Gallery = new[]
+    {
+        "/img/BRFViggen/HomepageBRFViggen.png",
+        "/img/BRFViggen/Bokningssystem.png"
+    },
+    RepoUrl = null,
+    LiveUrl = null
+},
 
             new ProjectVM
             {
@@ -72,42 +72,9 @@ namespace Portfolio.Content
                 {
                     "/img/Portfolio/pf1.png",
                     "/img/Portfolio/pf2.png",
-                    "/img/Portfolio/pf3.png"
+                   
                 },
                 RepoUrl = "https://github.com/HarotDev/Portfolio",
-                LiveUrl = "https://tasmim.se"
-            },
-
-            new ProjectVM
-            {
-                Slug = "tasmim-webbyra",
-                Title = "Tasmim – Webbyråsajt",
-                Summary = "Fler-språkig webbyråsajt byggd i ASP.NET Core med CI/CD-flöde till Fly.io.",
-                HeroImage = "/img/Tasmim/tasmim1.png",
-                Role = "Frontend & integration",
-                Period = "2025",
-                Techs = new[] { "ASP.NET Core", "JavaScript", "CSS", "i18n" },
-                Bullets = new[]
-                {
-                    "Flerspråksstöd (svenska/arabisk) med resx",
-                    "Komponentbaserad layout för återanvändbara sektioner",
-                    "Responsiv design anpassad för alla enheter",
-                    "CI/CD med GitHub Actions → Fly.io"
-                },
-                Learnings = new[]
-                {
-                    "i18n med .resx + RTL-stöd och kulturväxling",
-                    "SEO per språk (hreflang, localized meta)",
-                    "Modulär vy-komposition för snabb återanvändning",
-                    "Bildoptimering & lazy loading för bättre Web Vitals"
-                },
-                Gallery = new[]
-                {
-                    "/img/Tasmim/tasmim1.png",
-                    "/img/Tasmim/tasmim2.png",
-                    "/img/Tasmim/tasmim3.png"
-                },
-                RepoUrl = "https://github.com/HarotDev/Tasmim.se",
                 LiveUrl = "https://tasmim.se"
             },
 
